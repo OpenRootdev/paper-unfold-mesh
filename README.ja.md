@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/logo.svg" width="104" alt="Paper Unfold Mesh logo">
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/logo.svg" width="104" alt="Paper Unfold Mesh logo">
 </p>
 
 <h1 align="center">Paper Unfold Mesh</h1>
@@ -9,19 +9,19 @@
   <sub>この表現を動画用に、無限のバリエーションで作れるよう AI エージェントに教えるスキルです。</sub>
 </p>
 
-<p align="center"><a href="https://github.com/Ker102/paper-unfold-mesh#readme">English</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.es.md">Español</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.de.md">Deutsch</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.fr.md">Français</a> · <b>日本語</b> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.zh-CN.md">简体中文</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.pt-BR.md">Português</a></p>
+<p align="center"><a href="https://github.com/OpenRootdev/paper-unfold-mesh#readme">English</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.es.md">Español</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.de.md">Deutsch</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.fr.md">Français</a> · <b>日本語</b> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.zh-CN.md">简体中文</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.pt-BR.md">Português</a></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/preview.gif" width="760" alt="木の机の上で、破れたグラフ、付箋2枚、じゃばら、巻物が開いていく様子">
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/preview.gif" width="760" alt="木の机の上で、破れたグラフ、付箋2枚、じゃばら、巻物が開いていく様子">
 </p>
 
 <p align="center">
-  <a href="https://github.com/Ker102/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip"><b>スキルをダウンロード</b></a> &nbsp;·&nbsp; <a href="#はじめかた">はじめかた</a> &nbsp;·&nbsp; <a href="https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md">スキルを読む</a>
+  <a href="https://github.com/OpenRootdev/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip"><b>スキルをダウンロード</b></a> &nbsp;·&nbsp; <a href="#はじめかた">はじめかた</a> &nbsp;·&nbsp; <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/SKILL.md">スキルを読む</a>
 </p>
 
 <p align="center">
   <sub>対応</sub><br>
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/claude.svg" height="16" alt="">&nbsp;Claude Code &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/javascript.svg" height="16" alt="">&nbsp;JavaScript &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/gsap.svg" height="16" alt="">&nbsp;GSAP
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/claude.svg" height="16" alt="">&nbsp;Claude Code &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/javascript.svg" height="16" alt="">&nbsp;JavaScript &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/gsap.svg" height="16" alt="">&nbsp;GSAP
 </p>
 
 <p align="center">
@@ -41,7 +41,7 @@
 
 ## はじめかた
 
-1. <code><a href="https://github.com/Ker102/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip">paper-unfold-mesh.zip</a></code> をダウンロードし、エージェントのスキルフォルダに展開します（Claude Code の場合は <code>~/.claude/skills/</code>）。
+1. <code><a href="https://github.com/OpenRootdev/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip">paper-unfold-mesh.zip</a></code> をダウンロードし、エージェントのスキルフォルダに展開します（Claude Code の場合は <code>~/.claude/skills/</code>）。
 2. あとは普通の言葉でエージェントに頼むだけです。例：
 
    > *3つのステップを、じゃばら折りの紙が一折りずつ開いて見せるようにして。*
@@ -49,7 +49,7 @@
 git でインストールする場合：
 
 ```bash
-git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh
+git clone --depth 1 https://github.com/OpenRootdev/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh
 ```
 
 ## 必要なもの
@@ -60,18 +60,18 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## 中身
 
-- [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) · エージェントが従う手順書。失敗例と試したいアイデアも載っています。
-- [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · 9シーンのデモ動画の全ソース。
+- [`SKILL.md`](https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/SKILL.md) · エージェントが従う手順書。失敗例と試したいアイデアも載っています。
+- [`examples/paper-unfold-trials.html`](https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · 9シーンのデモ動画の全ソース。
 
-<sub>プレビュー用の画像・動画は <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a> ブランチ、翻訳は <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a> ブランチにあり、<code>main</code> にはスキル本体だけが入っています。</sub>
+<sub>プレビュー用の画像・動画は <a href="https://github.com/OpenRootdev/paper-unfold-mesh/tree/assets"><code>assets</code></a> ブランチ、翻訳は <a href="https://github.com/OpenRootdev/paper-unfold-mesh/tree/translations"><code>translations</code></a> ブランチにあり、<code>main</code> にはスキル本体だけが入っています。</sub>
 
 ## 姉妹スキル
 
-<a href="https://github.com/Ker102/paper-unfold-frames"><img src="https://raw.githubusercontent.com/Ker102/paper-unfold-frames/assets/logo.svg" width="40" align="left" alt=""></a>
-**[Paper Unfold Frames](https://github.com/Ker102/paper-unfold-frames)**<br>
+<a href="https://github.com/OpenRootdev/paper-unfold-frames"><img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-frames/assets/logo.svg" width="40" align="left" alt=""></a>
+**[Paper Unfold Frames](https://github.com/OpenRootdev/paper-unfold-frames)**<br>
 写真のようにリアルな版：画像モデルが開く様子を描くので、本物の紙をコマ撮りしたように見えます。
 <br clear="left">
 
 ---
 
-<sub>MIT ライセンス · <a href="https://github.com/Ker102">Ker102</a></sub>
+<sub>MIT ライセンス · <a href="https://github.com/OpenRootdev">OpenRootdev</a></sub>

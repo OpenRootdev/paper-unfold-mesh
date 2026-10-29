@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/logo.svg" width="104" alt="Paper Unfold Mesh logo">
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/logo.svg" width="104" alt="Paper Unfold Mesh logo">
 </p>
 
 <h1 align="center">Paper Unfold Mesh</h1>
@@ -9,19 +9,19 @@
   <sub>Ein Skill, der deinem KI-Agenten beibringt, diesen Effekt für deine Videos zu erstellen, in endlosen Varianten.</sub>
 </p>
 
-<p align="center"><a href="https://github.com/Ker102/paper-unfold-mesh#readme">English</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.es.md">Español</a> · <b>Deutsch</b> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.fr.md">Français</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.ja.md">日本語</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.zh-CN.md">简体中文</a> · <a href="https://github.com/Ker102/paper-unfold-mesh/blob/translations/README.pt-BR.md">Português</a></p>
+<p align="center"><a href="https://github.com/OpenRootdev/paper-unfold-mesh#readme">English</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.es.md">Español</a> · <b>Deutsch</b> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.fr.md">Français</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.ja.md">日本語</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.zh-CN.md">简体中文</a> · <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/translations/README.pt-BR.md">Português</a></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/preview.gif" width="760" alt="Ein eingerissenes Diagramm, zwei Haftnotizen, ein Akkordeon und eine Rolle entfalten sich auf einem Holztisch">
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/preview.gif" width="760" alt="Ein eingerissenes Diagramm, zwei Haftnotizen, ein Akkordeon und eine Rolle entfalten sich auf einem Holztisch">
 </p>
 
 <p align="center">
-  <a href="https://github.com/Ker102/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip"><b>Skill herunterladen</b></a> &nbsp;·&nbsp; <a href="#loslegen">Loslegen</a> &nbsp;·&nbsp; <a href="https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md">Skill lesen</a>
+  <a href="https://github.com/OpenRootdev/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip"><b>Skill herunterladen</b></a> &nbsp;·&nbsp; <a href="#loslegen">Loslegen</a> &nbsp;·&nbsp; <a href="https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/SKILL.md">Skill lesen</a>
 </p>
 
 <p align="center">
   <sub>Funktioniert mit</sub><br>
-  <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/claude.svg" height="16" alt="">&nbsp;Claude Code &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/javascript.svg" height="16" alt="">&nbsp;JavaScript &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/Ker102/paper-unfold-mesh/assets/brands/gsap.svg" height="16" alt="">&nbsp;GSAP
+  <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/claude.svg" height="16" alt="">&nbsp;Claude Code &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/javascript.svg" height="16" alt="">&nbsp;JavaScript &nbsp;·&nbsp; <img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-mesh/assets/brands/gsap.svg" height="16" alt="">&nbsp;GSAP
 </p>
 
 <p align="center">
@@ -41,7 +41,7 @@ Dein Agent baut ein Blatt aus kleinen Dreiecken, knüllt es zu einer Kugel, eine
 
 ## Loslegen
 
-1. Lade <code><a href="https://github.com/Ker102/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip">paper-unfold-mesh.zip</a></code> herunter und entpacke es in den Skills-Ordner deines Agenten (bei Claude Code: <code>~/.claude/skills/</code>).
+1. Lade <code><a href="https://github.com/OpenRootdev/paper-unfold-mesh/releases/latest/download/paper-unfold-mesh.zip">paper-unfold-mesh.zip</a></code> herunter und entpacke es in den Skills-Ordner deines Agenten (bei Claude Code: <code>~/.claude/skills/</code>).
 2. Bitte deinen Agenten in ganz normalen Worten darum, zum Beispiel:
 
    > *Zeig unsere drei Schritte auf einem Akkordeon-Papierstreifen, der sich Falte für Falte öffnet.*
@@ -49,7 +49,7 @@ Dein Agent baut ein Blatt aus kleinen Dreiecken, knüllt es zu einer Kugel, eine
 Oder mit git installieren:
 
 ```bash
-git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh
+git clone --depth 1 https://github.com/OpenRootdev/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh
 ```
 
 ## Was du brauchst
@@ -60,18 +60,18 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## Was drin ist
 
-- [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) · Die Anleitung für deinen Agenten, inklusive Fehlern und Ideen zum Ausprobieren.
-- [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · Der komplette Quellcode des Demo-Videos mit 9 Szenen.
+- [`SKILL.md`](https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/SKILL.md) · Die Anleitung für deinen Agenten, inklusive Fehlern und Ideen zum Ausprobieren.
+- [`examples/paper-unfold-trials.html`](https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · Der komplette Quellcode des Demo-Videos mit 9 Szenen.
 
-<sub>Vorschau-Medien liegen im Branch <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a>, Übersetzungen in <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a> – <code>main</code> enthält nur den Skill.</sub>
+<sub>Vorschau-Medien liegen im Branch <a href="https://github.com/OpenRootdev/paper-unfold-mesh/tree/assets"><code>assets</code></a>, Übersetzungen in <a href="https://github.com/OpenRootdev/paper-unfold-mesh/tree/translations"><code>translations</code></a> – <code>main</code> enthält nur den Skill.</sub>
 
 ## Schwester-Skill
 
-<a href="https://github.com/Ker102/paper-unfold-frames"><img src="https://raw.githubusercontent.com/Ker102/paper-unfold-frames/assets/logo.svg" width="40" align="left" alt=""></a>
-**[Paper Unfold Frames](https://github.com/Ker102/paper-unfold-frames)**<br>
+<a href="https://github.com/OpenRootdev/paper-unfold-frames"><img src="https://raw.githubusercontent.com/OpenRootdev/paper-unfold-frames/assets/logo.svg" width="40" align="left" alt=""></a>
+**[Paper Unfold Frames](https://github.com/OpenRootdev/paper-unfold-frames)**<br>
 Die fotorealistische Version: Ein Bildmodell zeichnet das Entfalten, es sieht aus wie echtes Papier, Bild für Bild fotografiert.
 <br clear="left">
 
 ---
 
-<sub>MIT-Lizenz · <a href="https://github.com/Ker102">Ker102</a></sub>
+<sub>MIT-Lizenz · <a href="https://github.com/OpenRootdev">OpenRootdev</a></sub>
