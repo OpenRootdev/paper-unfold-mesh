@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Caveat"; src: url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight: 700; font-display: block; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #c8925a; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #c8925a url("assets/img/wood.jpg") center / cover; }
+      #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0) 55%, rgba(40, 20, 5, 0.32) 100%); }
+      #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      #tags { position: absolute; left: 56px; top: 44px; }
+      .tag { position: absolute; left: 0; top: 0; white-space: nowrap; padding: 10px 18px; background: #fbf8f1; color: #2a2622;
+        font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: 0.02em; box-shadow: 0 4px 10px rgba(60, 35, 10, 0.25); opacity: 0; transform: rotate(-1deg); }
+      #pre { position: absolute; left: -9999px; top: 0; font-family: "Caveat"; font-weight: 700; font-size: 40px; }
+    </style>
+  </head>
+  <body>
+    <!-- Paper unfold trials: seven crumple/fold structures that open frame by frame (stepped to 12 fps) on a desk -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="56" data-width="1920" data-height="1080">
+      <canvas id="stage" width="1920" height="1080"></canvas>
+      <div id="vig"></div>
+      <div id="tags">
+        <div class="tag" data-layout-allow-overlap>01 · three on the desk, one opens</div>
+        <div class="tag" data-layout-allow-overlap>02 · dropped tight ball, fast bloom</div>
+        <div class="tag" data-layout-allow-overlap>03 · loose ball rolls in, big folds</div>
+        <div class="tag" data-layout-allow-overlap>04 · squashed wads, two colours, 10 fps</div>
+        <div class="tag" data-layout-allow-overlap>05 · accordion, strip by strip</div>
+        <div class="tag" data-layout-allow-overlap>06 · folded note, flaps open in turn</div>
+        <div class="tag" data-layout-allow-overlap>07 · rolled scroll, unrolls</div>
+        <div class="tag" data-layout-allow-overlap>08 · GPT image frames, sketch revealed as it opens, 8 fps</div>
+        <div class="tag" data-layout-allow-overlap>09 · GPT image frames, notebook page, 6 fps</div>
+      </div>
+      <audio id="music" class="clip" src="assets/audio/bed.wav" data-start="0" data-duration="56" data-volume="0.35" data-track-index="2" data-audio-group="music"></audio>
+      <audio id="cr00" class="clip" src="assets/audio/crinkle-0.wav" data-start="1.5" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr01" class="clip" src="assets/audio/crinkle-1.wav" data-start="5.8" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr02" class="clip" src="assets/audio/crinkle-2.wav" data-start="8.4" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr03" class="clip" src="assets/audio/crinkle-3.wav" data-start="12.1" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr04" class="clip" src="assets/audio/crinkle-0.wav" data-start="14.7" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr05" class="clip" src="assets/audio/crinkle-1.wav" data-start="20.7" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr06" class="clip" src="assets/audio/crinkle-2.wav" data-start="21.5" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr07" class="clip" src="assets/audio/crinkle-3.wav" data-start="27.1" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr08" class="clip" src="assets/audio/crinkle-0.wav" data-start="31" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr09" class="clip" src="assets/audio/crinkle-1.wav" data-start="33.2" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr10" class="clip" src="assets/audio/crinkle-2.wav" data-start="34.3" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr11" class="clip" src="assets/audio/crinkle-3.wav" data-start="37" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr12" class="clip" src="assets/audio/crinkle-0.wav" data-start="38.9" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <audio id="cr13" class="clip" src="assets/audio/crinkle-1.wav" data-start="45.4" data-duration="1.5" data-volume="0.3" data-track-index="4" data-audio-group="sfx"></audio>
+      <audio id="cr14" class="clip" src="assets/audio/crinkle-2.wav" data-start="51.2" data-duration="1.5" data-volume="0.3" data-track-index="3" data-audio-group="sfx"></audio>
+      <div id="pre">Aa</div>
+      <img class="gen" src="assets/img/gen/b0.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b1.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b2.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b3.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b4.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b5.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b6.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b7.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/b8.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c0.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c1.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c2.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c3.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c4.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c5.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c6.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c7.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img class="gen" src="assets/img/gen/c8.png" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+      <img id="paperImg" src="assets/img/paper.jpg" alt="" style="position: absolute; left: -9999px; width: 8px; height: 8px" />
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const W = 1920, H = 1080, FPS = 12, DUR = 56, FOCAL = 3000;
+      const INK = "#2a2622", GRAPHITE = "#3a3936", CORAL = "#cc5236", TEAL = "#0b8573", BLUE = "#3d6fb0";
+      const LIGHT = (() => { const v = [-0.4, -0.5, 0.77], m = Math.hypot(...v); return v.map((c) => c / m); })();
+
+      // ── small maths ──
+      const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+      const seg = (t, a, b) => clamp((t - a) / (b - a));
+      const smooth = (x) => x * x * (3 - 2 * x);
+      const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+      const outC = (x) => 1 - Math.pow(1 - x, 3);
+      const inQ = (x) => x * x;
+      const lerp = (a, b, x) => a + (b - a) * x;
+      const hash = (n, s = 1) => { const x = Math.sin(n * 127.1 + s * 311.7) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
+      const rnd = (seed) => { let s = (seed * 2654435761) >>> 0 || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; };
+
+      // ragged outline: a wandering inset along every edge plus a few bitten-off corners
+      function tornPath(w, h, seed, o) {
+        const R = rnd(seed + 99), ph = R() * 100, per = 2 * (w + h), N = Math.ceil(per / 7), pts = [];
+        const vn = (f) => { const a = Math.floor(f); return lerp(hash(a, seed), hash(a + 1, seed), smooth(f - a)); };
+        const cuts = [0, 1, 2, 3].map(() => (R() < o.bites ? 40 + R() * 80 : 0)), C = [[0, 0], [w, 0], [w, h], [0, h]];
+        for (let i = 0; i < N; i++) {
+          const s = (i / N) * per; let x, y, nx, ny;
+          if (s < w) { x = s; y = 0; nx = 0; ny = 1; } else if (s < w + h) { x = w; y = s - w; nx = -1; ny = 0; } else if (s < 2 * w + h) { x = w - (s - w - h); y = h; nx = 0; ny = -1; } else { x = 0; y = h - (s - 2 * w - h); nx = 1; ny = 0; }
+          let off = o.base + o.rough * (0.5 + 0.5 * vn(s / 90 + ph)) + o.rough * 0.45 * (0.5 + 0.5 * vn(s / 21 + ph * 2)) + 2.5 * hash(i, seed + 5);
+          // inside a bitten corner the edge is dropped; the gap is bridged by a jagged chord below
+          if (C.some((c, k) => cuts[k] && Math.abs(x - c[0]) < cuts[k] && Math.abs(y - c[1]) < cuts[k])) { if (pts.length && pts[pts.length - 1] !== null) pts.push(null); continue; }
+          pts.push([clamp(x + nx * off, off, w - off), clamp(y + ny * off, off, h - off)]);
+        }
+        // close the gaps: wrap so the list starts on a kept point, then fill each gap with a noisy straight tear
+        while (pts[0] === null) pts.push(pts.shift());
+        const out = [];
+        for (let i = 0; i < pts.length; i++) {
+          if (pts[i] !== null) { out.push(pts[i]); continue; }
+          const p0 = out[out.length - 1], p1 = pts.slice(i + 1).find((p) => p) || out[0], L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), m = Math.max(2, Math.floor(L / 9));
+          const dx = (p1[0] - p0[0]) / L, dy = (p1[1] - p0[1]) / L;
+          for (let j = 1; j < m; j++) { const f = j / m, jit = 5 * vn(j * 0.7 + i) + 2.5 * hash(j + i, seed + 9); out.push([lerp(p0[0], p1[0], f) - dy * jit, lerp(p0[1], p1[1], f) + dx * jit]); }
+        }
+        return out;
+      }
+
+      // ── a sheet of paper as a mesh that can be crumpled, fanned, folded or rolled ──
+      class Sheet {
+        constructor(o) {
+          Object.assign(this, { nx: 32, ny: 22, tents: 50, tentW: 0.25, ampBall: 0.07, ampRes: 5, s0: 0.55, crumple: 0.22, squash: 1, stagger: 0.35, petals: 3,
+            color: "#fbf8f1", back: "#eae2d1", strips: 8, rho: 34, smoothN: 0.6, tex: () => {} }, o);
+          const { w, h, nx, ny } = this, R = rnd(this.seed);
+          this.n = (nx + 1) * (ny + 1);
+          this.U = new Float32Array(this.n); this.V = new Float32Array(this.n);
+          for (let j = 0, q = 0; j <= ny; j++) for (let i = 0; i <= nx; i++, q++) { this.U[q] = (i / nx - 0.5) * w; this.V[q] = (j / ny - 0.5) * h; }
+          // crease fields: many clamped V-valleys/ridges with straight crease lines, like real crumpled paper
+          const field = (count, width) => {
+            const T = [];
+            for (let k = 0; k < count; k++) { const a = R() * Math.PI * 2; T.push({ cx: (R() - 0.5) * w, cy: (R() - 0.5) * h, nx: Math.cos(a), ny: Math.sin(a), wid: (0.35 + R()) * width * Math.max(w, h), s: R() < 0.5 ? -1 : 1 }); }
+            const f = new Float32Array(this.n); let mean = 0, sd = 0;
+            for (let q = 0; q < this.n; q++) { let v = 0; for (const t of T) { const d = Math.abs((this.U[q] - t.cx) * t.nx + (this.V[q] - t.cy) * t.ny); v += (t.s * Math.min(d, t.wid)) / t.wid; } f[q] = v; mean += v; }
+            mean /= this.n; for (let q = 0; q < this.n; q++) { f[q] -= mean; sd += f[q] * f[q]; } sd = Math.sqrt(sd / this.n) || 1;
+            for (let q = 0; q < this.n; q++) f[q] /= sd;
+            return f;
+          };
+          const hv = (this.hv = field(this.tents, this.tentW));
+          // the closed ball: the sheet wrapped all the way round a small sphere, its surplus packed into tight crinkles
+          if (this.kind === "ball") {
+            const fine = (this.fine = field(90, 0.1)), jx = field(30, 0.2), jy = field(30, 0.2), jz = field(30, 0.2), rm = Math.hypot(w, h) / 2, kc = (0.99 * Math.PI) / rm, Rb = (rm / Math.PI) * this.s0;
+            this.C = new Float32Array(this.n * 3);
+            for (let q = 0; q < this.n; q++) {
+              const r = Math.hypot(this.U[q], this.V[q]), dx = r ? this.U[q] / r : 0, dy = r ? this.V[q] / r : 0, th = r * kc;
+              const rad = Rb * (1 + this.crumple * (0.6 * fine[q] + 0.4 * hv[q]));
+              this.C[q * 3] = dx * Math.sin(th) * rad + jx[q] * Rb * 0.16; this.C[q * 3 + 1] = dy * Math.sin(th) * rad + jy[q] * Rb * 0.16;
+              this.C[q * 3 + 2] = (Rb - Math.cos(th) * rad + jz[q] * Rb * 0.16) * this.squash;
+            }
+          }
+          // unfold delay per vertex: uneven petals, outer paper opens last
+          this.rmax = Math.hypot(w, h) / 2; this.k0 = (0.94 * Math.PI) / this.rmax;
+          const ph = R() * 6.28, D = new Float32Array(this.n); let dm = 0;
+          for (let q = 0; q < this.n; q++) { const u = this.U[q], v = this.V[q], r = Math.hypot(u, v) / this.rmax, f = Math.atan2(v, u);
+            D[q] = (0.55 + 0.45 * Math.sin(f * this.petals + ph) + 0.12 * hv[q]) * (0.25 + 0.75 * (1 - r)); dm = Math.max(dm, D[q]); }
+          for (let q = 0; q < this.n; q++) D[q] = clamp(D[q] / dm);
+          this.D = D;
+          this.tris = [];
+          for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) { const a = j * (nx + 1) + i, b = a + 1, c = a + nx + 1, d = c + 1; this.tris.push([a, b, c], [b, d, c]); }
+          this.P = new Float32Array(this.n * 3);
+          const cnv = () => { const c = document.createElement("canvas"); c.width = w; c.height = h; return c; };
+          this.texC = cnv(); this.darkC = cnv(); this.lightC = cnv(); this.backC = cnv(); this.texKey = null;
+          if (this.torn) { const pts = tornPath(w, h, this.seed, this.torn); this.tornP = new Path2D(); pts.forEach(([x, y], i) => (i ? this.tornP.lineTo(x, y) : this.tornP.moveTo(x, y))); this.tornP.closePath(); }
+        }
+        texture(k) {
+          const ready = paperReady() && fontReady(), key = Math.round(k * 200) + (ready ? "r" : "n");
+          if (key === this.texKey) return this.texC;
+          this.texKey = key;
+          const g = this.texC.getContext("2d"), { w, h } = this;
+          g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = "source-over"; g.globalAlpha = 1;
+          g.fillStyle = this.color; g.fillRect(0, 0, w, h);
+          if (paperReady()) { g.globalCompositeOperation = "multiply"; g.globalAlpha = 0.55; g.drawImage(paperEl, (this.seed * 37) % 600, (this.seed * 53) % 300, w, h, 0, 0, w, h); g.globalCompositeOperation = "source-over"; g.globalAlpha = 1; }
+          g.lineCap = "round"; g.lineJoin = "round";
+          this.tex(g, w, h, k, this);
+          if (this.tornP) { g.globalAlpha = 1; g.fillStyle = "#000"; g.globalCompositeOperation = "destination-in"; g.fill(this.tornP); g.globalCompositeOperation = "source-over";
+            g.save(); g.clip(this.tornP); g.strokeStyle = "rgba(255,255,255,0.9)"; g.lineWidth = 6; g.stroke(this.tornP); g.restore(); }
+          // same outline in flat colours: the facet shading and the back of the sheet
+          [[this.darkC, "#3a2612"], [this.lightC, "#fffdf5"], [this.backC, this.back]].forEach(([c, col], i) => { const q = c.getContext("2d");
+            q.globalCompositeOperation = "source-over"; q.clearRect(0, 0, w, h); q.fillStyle = col; q.fillRect(0, 0, w, h);
+            if (i === 2 && paperReady()) { q.globalCompositeOperation = "multiply"; q.globalAlpha = 0.5; q.drawImage(paperEl, 300, 200, w, h, 0, 0, w, h); q.globalAlpha = 1; }
+            q.globalCompositeOperation = "destination-in"; q.drawImage(this.texC, 0, 0); q.globalCompositeOperation = "source-over"; });
+          return this.texC;
+        }
+        release() { this.texKey = null; }
+        // e: 0 = fully crumpled/folded, 1 = flat
+        pose(e) {
+          const { U, V, hv, D, P, n, w } = this;
+          if (this.kind === "ball") {
+            const st = this.stagger, C = this.C;
+            for (let q = 0; q < n; q++) {
+              const ev = clamp((e - st * D[q]) / (1 - st)), wb = smooth(clamp(ev / 0.45)), ee = smooth(clamp((ev - 0.15) / 0.85)), k = this.k0 * Math.pow(1 - ee, 1.3), sc = lerp(0.8, 1, ee);
+              const u = U[q], v = V[q], r = Math.hypot(u, v), dx = r ? u / r : 0, dy = r ? v / r : 0;
+              let lat = r, z = 0, nl = 0, nz = 1;
+              if (k > 1e-7) { const th = r * k; lat = Math.sin(th) / k; z = (1 - Math.cos(th)) / k; nl = -Math.sin(th); nz = Math.cos(th); }
+              const c = (this.ampBall * this.rmax * (1 - ee) * (1 - ee) + this.ampRes) * hv[q] + 0.025 * this.rmax * Math.pow(1 - ee, 1.5) * this.fine[q];
+              const sq = 1 - (1 - this.squash) * (1 - ee);
+              P[q * 3] = lerp(C[q * 3], dx * (lat + nl * c) * sc, wb); P[q * 3 + 1] = lerp(C[q * 3 + 1], dy * (lat + nl * c) * sc, wb); P[q * 3 + 2] = lerp(C[q * 3 + 2], (z + nz * c) * sq * sc, wb);
+            }
+          } else if (this.kind === "fan") {
+            const m = this.strips, sw = w / m, st = this.stagger, X = [0], Z = [0], A = [];
+            for (let s = 0; s < m; s++) { const ek = smooth(clamp((e - st * (s / (m - 1))) / (1 - st))); A[s] = 1.25 * (1 - ek);
+              X[s + 1] = X[s] + sw * Math.cos(A[s]); Z[s + 1] = Z[s] + (s % 2 ? -1 : 1) * sw * Math.sin(A[s]); }
+            const zmin = Math.min(...Z), xc = X[m] / 2;
+            for (let q = 0; q < n; q++) { const s0 = U[q] + w / 2, s = Math.min(m - 1, Math.floor(s0 / sw + 1e-6)), t = s0 - s * sw;
+              P[q * 3] = X[s] + t * Math.cos(A[s]) - xc; P[q * 3 + 1] = V[q]; P[q * 3 + 2] = Z[s] - zmin + (s % 2 ? -1 : 1) * t * Math.sin(A[s]) + this.ampRes * hv[q] * e * e; }
+          } else if (this.kind === "fold") {
+            const b = (Math.PI - 0.26) * (1 - smooth(seg(e, 0, 0.5))), a = (Math.PI - 0.18) * (1 - smooth(seg(e, 0.5, 1)));
+            for (let q = 0; q < n; q++) { let x = U[q], y = V[q], z = 0;
+              if (U[q] > 0) { const x2 = x * Math.cos(a) - z * Math.sin(a); z = x * Math.sin(a) + z * Math.cos(a); x = x2; }
+              if (V[q] > 0) { const y2 = y * Math.cos(b) - z * Math.sin(b); z = y * Math.sin(b) + z * Math.cos(b); y = y2; }
+              P[q * 3] = x; P[q * 3 + 1] = y; P[q * 3 + 2] = z + this.ampRes * hv[q] * e * e; }
+            this.recenter();
+          } else if (this.kind === "scroll") {
+            const sc = e * w, r0 = this.rho;
+            for (let q = 0; q < n; q++) { const s = U[q] + w / 2; let x = s, z = 0;
+              if (s > sc) { const th = (s - sc) / r0, rr = r0 * (1 - (0.09 * th) / (2 * Math.PI)); x = sc + rr * Math.sin(th); z = rr * (1 - Math.cos(th)); }
+              P[q * 3] = x - w / 2; P[q * 3 + 1] = V[q]; P[q * 3 + 2] = z + this.ampRes * hv[q] * (s <= sc ? 1 : 0.2); }
+          }
+          return P;
+        }
+        recenter() {
+          const P = this.P; let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+          for (let q = 0; q < this.n; q++) { x0 = Math.min(x0, P[q * 3]); x1 = Math.max(x1, P[q * 3]); y0 = Math.min(y0, P[q * 3 + 1]); y1 = Math.max(y1, P[q * 3 + 1]); }
+          const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+          for (let q = 0; q < this.n; q++) { P[q * 3] -= cx; P[q * 3 + 1] -= cy; }
+        }
+      }
+
+      // ── drawing ──
+      const cv = document.getElementById("stage"), ctx = cv.getContext("2d");
+      const mk = () => { const c = document.createElement("canvas"); c.width = W; c.height = H; return c; };
+      const shadowC = mk(), sg = shadowC.getContext("2d"), layerC = mk(), lg = layerC.getContext("2d");
+      const paperC = mk(), pg = paperC.getContext("2d"), darkB = mk(), dg = darkB.getContext("2d"), lightB = mk(), hg = lightB.getContext("2d");
+      const paperEl = document.getElementById("paperImg");
+      const GEN = [...document.querySelectorAll("img.gen")], genB = GEN.slice(0, 9), genC = GEN.slice(9);
+      const paperReady = () => paperEl.complete && paperEl.naturalWidth > 0 && GEN.every((im) => im.complete && im.naturalWidth > 0);
+      const fontReady = () => document.fonts.check('700 40px "Caveat"');
+      document.fonts.load('700 40px "Caveat"');
+
+      // offset a screen triangle's edges outward by d (mitred, capped so slivers don't spike)
+      function grow(x0, y0, x1, y1, x2, y2, d) {
+        const P = [[x0, y0], [x1, y1], [x2, y2]], sgn = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0) > 0 ? 1 : -1, N = [];
+        for (let i = 0; i < 3; i++) { const p = P[i], q = P[(i + 1) % 3], ex = q[0] - p[0], ey = q[1] - p[1], l = Math.hypot(ex, ey) || 1; N.push([(sgn * ey) / l, (-sgn * ex) / l]); }
+        return P.map((p, i) => { const n1 = N[(i + 2) % 3], n2 = N[i], k = 1 + n1[0] * n2[0] + n1[1] * n2[1], m = Math.min(1.6, 1 / Math.max(k / 2, 0.0625));
+          const mx = (n1[0] + n2[0]) / (Math.hypot(n1[0] + n2[0], n1[1] + n2[1]) || 1), my = (n1[1] + n2[1]) / (Math.hypot(n1[0] + n2[0], n1[1] + n2[1]) || 1);
+          return [p[0] + mx * d * Math.sqrt(m), p[1] + my * d * Math.sqrt(m)]; });
+      }
+      // affine map from the sheet's texture (uv) onto a facet's screen triangle
+      function mapTri(g, S, a, b, c, u0, v0, u1, v1, u2, v2, tw, th) {
+        const x0 = S.U[a] + tw, y0 = S.V[a] + th, x1 = S.U[b] + tw, y1 = S.V[b] + th, x2 = S.U[c] + tw, y2 = S.V[c] + th;
+        const den = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0);
+        const ma = ((u1 - u0) * (y2 - y0) - (u2 - u0) * (y1 - y0)) / den, mb = ((u2 - u0) * (x1 - x0) - (u1 - u0) * (x2 - x0)) / den;
+        const mc = ((v1 - v0) * (y2 - y0) - (v2 - v0) * (y1 - y0)) / den, md = ((v2 - v0) * (x1 - x0) - (v1 - v0) * (x2 - x0)) / den;
+        g.setTransform(ma, mc, mb, md, u0 - ma * x0 - mb * y0, v0 - mc * x0 - md * y0);
+      }
+      // it: { S, e, x, y, lift, rx, ry, rz, k, blur, s }
+      function drawSheet(g, it) {
+        const S = it.S, P = S.pose(it.e), n = S.n, tex = S.texture(it.k || 0);
+        const rx = it.rx || 0, ry = it.ry || 0, rz = it.rz || 0, sc = it.s || 1;
+        const cx = Math.cos(rx), sx = Math.sin(rx), cy = Math.cos(ry), sy = Math.sin(ry), cz = Math.cos(rz), sz = Math.sin(rz);
+        let zc = 0; for (let q = 0; q < n; q++) zc += P[q * 3 + 2]; zc /= n;
+        const X = new Float32Array(n), Y = new Float32Array(n), Z = new Float32Array(n); let zmin = 1e9;
+        for (let q = 0; q < n; q++) {
+          let x = P[q * 3] * sc, y = P[q * 3 + 1] * sc, z = (P[q * 3 + 2] - zc) * sc;
+          let t = y * cx - z * sx; z = y * sx + z * cx; y = t;
+          t = x * cy + z * sy; z = -x * sy + z * cy; x = t;
+          t = x * cz - y * sz; y = x * sz + y * cz; x = t;
+          X[q] = x; Y[q] = y; Z[q] = z; zmin = Math.min(zmin, z);
+        }
+        const lift = it.lift || 0;
+        for (let q = 0; q < n; q++) { Z[q] += lift - zmin; X[q] += it.x; Y[q] += it.y; }
+        // shadow: every facet dropped onto the desk, offset away from the light, blurred
+        sg.setTransform(1, 0, 0, 1, 0, 0); sg.clearRect(0, 0, W, H); sg.fillStyle = "#000";
+        if (!S.tornP) {
+          sg.beginPath();
+          for (const [a, b, c] of S.tris) { sg.moveTo(X[a] + Z[a] * 0.3 + 4, Y[a] + Z[a] * 0.38 + 6); sg.lineTo(X[b] + Z[b] * 0.3 + 4, Y[b] + Z[b] * 0.38 + 6); sg.lineTo(X[c] + Z[c] * 0.3 + 4, Y[c] + Z[c] * 0.38 + 6); sg.closePath(); }
+          sg.fill();
+        } else {
+          // ragged sheets: map the outline silhouette so the shadow follows the torn edge
+          const hw = S.w / 2, hh = S.h / 2, px = (q) => X[q] + Z[q] * 0.3 + 4, py = (q) => Y[q] + Z[q] * 0.38 + 6;
+          for (const [a, b, c] of S.tris) {
+            sg.save(); sg.beginPath(); sg.moveTo(px(a), py(a)); sg.lineTo(px(b), py(b)); sg.lineTo(px(c), py(c)); sg.closePath(); sg.lineWidth = 1.5; sg.clip();
+            mapTri(sg, S, a, b, c, px(a), py(a), px(b), py(b), px(c), py(c), hw, hh); sg.drawImage(S.darkC, 0, 0); sg.restore();
+          }
+        }
+        g.save(); g.filter = `blur(${(7 + lift * 0.035).toFixed(1)}px)`; g.globalAlpha = 0.34 * clamp(1 - lift / 1600, 0.25, 1); g.drawImage(shadowC, 0, 0); g.restore();
+        // project and sort back to front
+        const SX = new Float32Array(n), SY = new Float32Array(n);
+        for (let q = 0; q < n; q++) { const f = FOCAL / (FOCAL - Z[q]); SX[q] = W / 2 + (X[q] - W / 2) * f; SY[q] = H / 2 + (Y[q] - H / 2) * f; }
+        const order = S.tris.map((t, i) => [i, Z[t[0]] + Z[t[1]] + Z[t[2]]]).sort((p, q) => p[1] - q[1] || p[0] - q[0]);
+        const tw = S.w / 2, th = S.h / 2;
+        pg.clearRect(0, 0, W, H); dg.fillStyle = "#fff"; dg.fillRect(0, 0, W, H); dg.lineWidth = hg.lineWidth = 1.2; dg.lineJoin = hg.lineJoin = "round"; hg.fillStyle = "#000"; hg.fillRect(0, 0, W, H);
+        // face normals, plus vertex normals averaged from them: blending the two keeps creases crisp but stops smooth curves looking tiled
+        const FN = new Float32Array(S.tris.length * 3), VN = new Float32Array(n * 3);
+        S.tris.forEach(([a, b, c], i) => {
+          const ux = X[b] - X[a], uy = Y[b] - Y[a], uz = Z[b] - Z[a], vx = X[c] - X[a], vy = Y[c] - Y[a], vz = Z[c] - Z[a];
+          let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx; const m = Math.hypot(nx, ny, nz) || 1;
+          FN[i * 3] = nx / m; FN[i * 3 + 1] = ny / m; FN[i * 3 + 2] = nz / m;
+          for (const q of [a, b, c]) { VN[q * 3] += FN[i * 3]; VN[q * 3 + 1] += FN[i * 3 + 1]; VN[q * 3 + 2] += FN[i * 3 + 2]; }
+        });
+        for (const [i] of order) {
+          const [a, b, c] = S.tris[i];
+          let sx = VN[a * 3] + VN[b * 3] + VN[c * 3], sy = VN[a * 3 + 1] + VN[b * 3 + 1] + VN[c * 3 + 1], sz = VN[a * 3 + 2] + VN[b * 3 + 2] + VN[c * 3 + 2];
+          const sm = Math.hypot(sx, sy, sz) || 1;
+          const sb = S.smoothN, fb = 1 - sb; let nx = fb * FN[i * 3] + sb * sx / sm, ny = fb * FN[i * 3 + 1] + sb * sy / sm, nz = fb * FN[i * 3 + 2] + sb * sz / sm; const m = Math.hypot(nx, ny, nz) || 1; nx /= m; ny /= m; nz /= m;
+          const front = (SX[b] - SX[a]) * (SY[c] - SY[a]) - (SY[b] - SY[a]) * (SX[c] - SX[a]) > 0;
+          if (!front) { nx = -nx; ny = -ny; nz = -nz; }
+          const d = clamp(nx * LIGHT[0] + ny * LIGHT[1] + nz * LIGHT[2]), br = 0.3 + (0.7 * d) / LIGHT[2];
+          // grow the facet outward on every edge so neighbours meet without hairline gaps
+          const [A, B, C] = grow(SX[a], SY[a], SX[b], SY[b], SX[c], SY[c], 0.9), tri = new Path2D(); tri.moveTo(A[0], A[1]); tri.lineTo(B[0], B[1]); tri.lineTo(C[0], C[1]); tri.closePath();
+          pg.save(); pg.clip(tri); mapTri(pg, S, a, b, c, SX[a], SY[a], SX[b], SY[b], SX[c], SY[c], tw, th); pg.drawImage(front ? tex : S.backC, 0, 0); pg.restore();
+          // shading goes into its own opaque buffers, so no facet edge ever mixes shaded and unshaded paper
+          const dk = br < 1 ? Math.min(0.62, 1 - br) : 0, lt = br > 1 ? Math.min(1, (br - 1) * 1.4) : 0;
+          dg.fillStyle = dg.strokeStyle = `rgb(${255 - dk * 197},${255 - dk * 217},${255 - dk * 237})`; dg.fill(tri); dg.stroke(tri);
+          hg.fillStyle = hg.strokeStyle = `rgb(${lt * 120},${lt * 118},${lt * 112})`; hg.fill(tri); hg.stroke(tri);
+        }
+        // keep the shading to the paper itself (torn margins stay clear), then multiply/screen it on
+        for (const q of [dg, hg]) { q.globalCompositeOperation = "destination-in"; q.drawImage(paperC, 0, 0); q.globalCompositeOperation = "source-over"; }
+        pg.globalCompositeOperation = "multiply"; pg.drawImage(darkB, 0, 0); pg.globalCompositeOperation = "screen"; pg.drawImage(lightB, 0, 0); pg.globalCompositeOperation = "source-over";
+        g.drawImage(paperC, 0, 0);
+      }
+      // a generated photo frame: one cell of a GPT-image unfold grid, with a soft desk shadow and optional ink on top
+      function drawImg(it) {
+        const im = it.imgs[it.frame], lift = it.lift || 0;
+        ctx.save(); ctx.translate(it.x, it.y); ctx.rotate(it.rz || 0); ctx.scale(it.s, it.s);
+        ctx.shadowColor = "rgba(60,35,10,0.38)"; ctx.shadowBlur = 16 + lift * 0.05; ctx.shadowOffsetX = 6 + lift * 0.08; ctx.shadowOffsetY = 10 + lift * 0.1;
+        if (im.naturalWidth) ctx.drawImage(im, -im.naturalWidth / 2, -im.naturalHeight / 2);
+        ctx.shadowColor = "transparent";
+        if (it.ink && it.k > 0) { ctx.lineCap = "round"; ctx.lineJoin = "round"; it.ink(ctx, it.k); }
+        ctx.restore();
+      }
+      function drawItem(it) {
+        if (it.imgs) return drawImg(it);
+        if (!it.blur) return drawSheet(ctx, it);
+        lg.setTransform(1, 0, 0, 1, 0, 0); lg.clearRect(0, 0, W, H); drawSheet(lg, it);
+        ctx.save(); ctx.filter = `blur(${it.blur}px)`; ctx.drawImage(layerC, 0, 0); ctx.restore();
+      }
+
+      // ── ink helpers for the textures (k = how much ink is drawn, 0..1) ──
+      const wob = (pts, seed, amp = 1.6) => pts.map(([x, y], i) => [x + hash(i + seed, 3) * amp, y + hash(i + seed, 7) * amp]);
+      function stroke(g, pts, f, color, wdt = 5) {
+        if (f <= 0) return; const L = [0]; for (let i = 1; i < pts.length; i++) L[i] = L[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+        const stop = L[L.length - 1] * clamp(f); g.strokeStyle = color; g.lineWidth = wdt; g.beginPath(); g.moveTo(pts[0][0], pts[0][1]);
+        for (let i = 1; i < pts.length; i++) { if (L[i] <= stop) g.lineTo(pts[i][0], pts[i][1]); else { const r = (stop - L[i - 1]) / (L[i] - L[i - 1]); g.lineTo(lerp(pts[i - 1][0], pts[i][0], r), lerp(pts[i - 1][1], pts[i][1], r)); break; } }
+        g.stroke();
+      }
+      const line = (x0, y0, x1, y1, nSeg = 12) => Array.from({ length: nSeg + 1 }, (_, i) => [lerp(x0, x1, i / nSeg), lerp(y0, y1, i / nSeg)]);
+      const circle = (cx, cy, r, turns = 1.05, nSeg = 40) => Array.from({ length: nSeg + 1 }, (_, i) => { const a = -1.8 + (i / nSeg) * turns * 6.283; return [cx + Math.cos(a) * r, cy + Math.sin(a) * r * 0.92]; });
+      const hand = (g, txt, x, y, size, color = INK, align = "left") => { g.font = `700 ${size}px "Caveat", cursive`; g.fillStyle = color; g.textAlign = align; g.textBaseline = "alphabetic"; g.fillText(txt, x, y); };
+
+      // ── textures ──
+      const texBlank = (g, w, h) => { g.globalAlpha = 0.5; hand(g, "mmm, no", w * 0.2, h * 0.4, 70, "#8a8378"); g.globalAlpha = 1; for (let i = 0; i < 3; i++) stroke(g, wob(line(w * 0.18, h * (0.55 + i * 0.1), w * 0.8, h * (0.55 + i * 0.1)), i * 9), 1, "rgba(42,38,34,0.35)", 3); };
+      const texIdea = (g, w, h, k) => {
+        g.fillStyle = "rgba(42,38,34,0.22)"; for (let y = 24; y < h; y += 32) for (let x = 24; x < w; x += 32) { g.beginPath(); g.arc(x, y, 1.7, 0, 6.283); g.fill(); }
+        hand(g, "Every idea starts", 80, 210, 96); hand(g, "as a crumpled draft.", 80, 320, 96);
+        stroke(g, wob(line(84, 352, 640, 346, 20), 4, 2.2), seg(k, 0, 0.5), CORAL, 7);
+        const bx = 700, by = 430; stroke(g, wob(circle(bx, by, 52), 8), seg(k, 0.4, 0.8), INK, 5);
+        stroke(g, wob(line(bx - 20, by + 58, bx + 20, by + 58, 4), 2), seg(k, 0.75, 0.85), INK, 5);
+        stroke(g, wob(line(bx - 14, by + 74, bx + 14, by + 74, 4), 5), seg(k, 0.8, 0.9), INK, 5);
+        [[-1, -1], [0, -1.3], [1, -1]].forEach(([dx, dy], i) => stroke(g, line(bx + dx * 72, by + dy * 66, bx + dx * 96, by + dy * 90, 3), seg(k, 0.85 + i * 0.04, 0.95 + i * 0.02), CORAL, 5));
+      };
+      const texDraft = (g, w, h, k) => {
+        hand(g, "Draft #7", 70, 140, 104); stroke(g, wob(line(72, 168, 380, 164, 16), 7), 1, INK, 4);
+        ["sketch it", "test it", "ship it"].forEach((s, i) => { const y = 290 + i * 130;
+          stroke(g, wob([[80, y - 50], [140, y - 50], [140, y + 6], [80, y + 6], [80, y - 50]], 20 + i, 1.2), 1, INK, 4);
+          hand(g, s, 180, y, 80);
+          stroke(g, wob([[88, y - 24], [106, y - 2], [158, y - 76]], 30 + i, 1.5), seg(k, i * 0.3, i * 0.3 + 0.3), CORAL, 8); });
+      };
+      const texChart = (g, w, h, k) => {
+        hand(g, "Growth this month", 70, 120, 84);
+        stroke(g, wob(line(110, 520, 960, 520, 30), 3), 1, INK, 5); stroke(g, wob(line(110, 520, 110, 170, 14), 6), 1, INK, 5);
+        [120, 170, 150, 230, 300].forEach((bh, i) => { const x = 200 + i * 150, top = 520 - bh * 1.05 * smooth(seg(k, i * 0.14, i * 0.14 + 0.35));
+          g.fillStyle = i === 4 ? "rgba(204,82,54,0.85)" : "rgba(11,133,115,0.75)"; if (top < 519) g.fillRect(x, top, 80, 520 - top); });
+        stroke(g, wob([[240, 390], [390, 340], [540, 360], [690, 280], [850, 190]], 12, 2), seg(k, 0.7, 1), INK, 4);
+      };
+      const texSticky = (txt, sub) => (g, w, h, k) => { hand(g, txt, 50, 180, 92); hand(g, sub, 50, 290, 64, "rgba(42,38,34,0.75)"); stroke(g, wob(line(54, 318, 330, 312, 14), 9), seg(k, 0, 1), CORAL, 6); };
+      const texSteps = (g, w, h, k) => {
+        const lab = ["idea", "sketch", "build", "ship"], y = 190;
+        stroke(g, wob(line(140, y, w - 140, y, 40), 2, 2), seg(k, 0, 0.6), INK, 5);
+        lab.forEach((s, i) => { const x = 175 + i * 350; stroke(g, wob(circle(x, y, 34), 40 + i), seg(k, 0.1 + i * 0.18, 0.3 + i * 0.18), i === 3 ? CORAL : TEAL, 6); hand(g, s, x, y + 112, 72, INK, "center"); });
+      };
+      const texNote = (g, w, h, k) => {
+        g.strokeStyle = "rgba(61,111,176,0.35)"; g.lineWidth = 2; for (let y = 90; y < h; y += 56) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
+        g.strokeStyle = "rgba(204,82,54,0.45)"; g.beginPath(); g.moveTo(96, 0); g.lineTo(96, h); g.stroke();
+        hand(g, "Builders' meetup", 130, 196, 88); hand(g, "Friday, 6 pm", 130, 308, 76, BLUE); hand(g, "bring a draft!", 130, 420, 76);
+        stroke(g, wob(circle(325, 285, 120, 1.08), 15, 2), seg(k, 0, 1), CORAL, 5);
+      };
+      const texScroll = (g, w, h, k) => {
+        hand(g, "made frame by frame", w / 2, 230, 130, INK, "center");
+        stroke(g, wob(line(320, 280, 1180, 272, 30), 5, 2.4), seg(k, 0, 0.7), CORAL, 8);
+        hand(g, "12 fps · paper & doodle", w / 2, 360, 60, "rgba(42,38,34,0.7)", "center");
+      };
+
+      // ink written on the generated flat sheets, in cell pixels around the cell centre
+      const inkB = (g, k) => {
+        g.save(); g.beginPath(); g.rect(-110, -110, 260 * seg(k, 0, 0.3), 200); g.clip(); hand(g, "to do:", -70, -78, 30, GRAPHITE); g.restore();
+        ["sketch it", "ship it"].forEach((tx, i) => { const y = -36 + i * 42;
+          g.save(); g.beginPath(); g.rect(-110, y - 30, 260 * seg(k, 0.25 + i * 0.25, 0.5 + i * 0.25), 40); g.clip(); hand(g, tx, -40, y, 30, GRAPHITE); g.restore();
+          stroke(g, wob([[-68, y - 10], [-60, y - 2], [-48, y - 22]], 70 + i, 0.6), seg(k, 0.55 + i * 0.25, 0.7 + i * 0.25), CORAL, 3); });
+      };
+
+      // ── the sheets: each scene gets its own ball / structure ──
+      const S1 = new Sheet({ kind: "ball", w: 860, h: 560, seed: 3, tents: 60, tentW: 0.22, s0: 0.6, ampBall: 0.1, nx: 40, ny: 28, torn: { base: 8, rough: 26, bites: 0.5 }, stagger: 0.4, petals: 3, tex: texIdea });
+      const S1b = new Sheet({ kind: "ball", w: 700, h: 520, seed: 12, tents: 55, tentW: 0.2, s0: 0.66, tex: texBlank });
+      const S1c = new Sheet({ kind: "ball", w: 640, h: 480, seed: 17, tents: 35, tentW: 0.32, s0: 0.66, ampBall: 0.09, tex: texBlank });
+      const S2 = new Sheet({ kind: "ball", w: 620, h: 720, seed: 21, torn: { base: 6, rough: 18, bites: 0.35 }, tents: 110, tentW: 0.13, s0: 0.42, ampBall: 0.06, stagger: 0.55, petals: 5, tex: texDraft });
+      const S3 = new Sheet({ kind: "ball", w: 1040, h: 600, seed: 31, torn: { base: 10, rough: 38, bites: 0.8 }, tents: 26, tentW: 0.3, s0: 0.62, crumple: 0.3, ampBall: 0.12, ampRes: 7, stagger: 0.25, petals: 2, nx: 56, ny: 32, tex: texChart });
+      const S4a = new Sheet({ kind: "ball", w: 470, h: 470, seed: 41, tents: 45, tentW: 0.26, s0: 0.62, squash: 0.38, stagger: 0.45, petals: 4, nx: 34, ny: 34, color: "#f7dc6a", back: "#ecc955", tex: texSticky("ship friday!", "small steps") });
+      const S4b = new Sheet({ kind: "ball", w: 470, h: 470, seed: 42, tents: 70, tentW: 0.18, s0: 0.6, squash: 0.5, stagger: 0.3, petals: 2, nx: 34, ny: 34, color: "#f5b7c4", back: "#e9a2b1", tex: texSticky("ask for", "feedback early") });
+      const S5 = new Sheet({ kind: "fan", smoothN: 0, w: 1440, h: 380, seed: 51, strips: 10, stagger: 0.55, ampRes: 3, nx: 60, ny: 1, tex: texSteps });
+      const S6 = new Sheet({ kind: "fold", smoothN: 0, w: 820, h: 560, seed: 61, tents: 18, ampRes: 4, nx: 28, ny: 20, tex: texNote });
+      const S7 = new Sheet({ kind: "scroll", w: 1500, h: 440, seed: 71, rho: 40, ampRes: 3, tents: 25, nx: 120, ny: 8, tex: texScroll });
+
+      const ALL = [S1, S1b, S1c, S2, S3, S4a, S4b, S5, S6, S7];
+
+      // ── the scenes, in local seconds ──
+      const drop = (t) => (t < 0.55 ? 1100 * (1 - Math.pow(t / 0.55, 2)) : t < 0.85 ? 80 * Math.sin((Math.PI * (t - 0.55)) / 0.3) : t < 1.0 ? 18 * Math.sin((Math.PI * (t - 0.85)) / 0.15) : 0);
+      const SCENES = [
+        { at: 0, dur: 7, f: (t) => {
+          const out = seg(t, 6.2, 7), e = smooth(seg(t, 1.5, 3.6)) * (1 - inOut(seg(t, 5.8, 6.5)));
+          const wob1 = Math.sin(t * 9) * 0.12 * seg(t, 0.5, 0.8) * (1 - seg(t, 0.9, 1.5));
+          return [
+            { S: S1b, e: 0, x: 600 - 1300 * inQ(out), y: 300, rx: 0.5, ry: 0.3 - 3 * inQ(out), rz: 0.4, blur: 4, s: 0.85 },
+            { S: S1c, e: 0, x: 1350 + 900 * inQ(out), y: 270, rx: -0.3, ry: 1.1 + 2 * inQ(out), rz: 1.2, blur: 5, s: 0.78 },
+            { S: S1, e, k: seg(t, 3.7, 5.0), x: lerp(960, 960, e) + 1400 * inQ(seg(t, 6.3, 7)), y: lerp(720, 540, e), rx: 0.35 * (1 - e), ry: wob1 * (1 - e) + 0.4 * (1 - e) + 4 * inQ(seg(t, 6.3, 7)), rz: lerp(0.6, -0.025, e) },
+          ]; } },
+        { at: 7, dur: 6, fps: 8, f: (t) => {
+          const e = smooth(seg(t, 1.4, 3.0)) * (1 - inOut(seg(t, 5.1, 5.6))), up = inQ(seg(t, 5.4, 6.0));
+          return [{ S: S2, e, k: seg(t, 3.1, 4.6), x: 960, y: 560 - 200 * up, lift: drop(t) + 1500 * up, rx: 2.4 * (1 - outC(seg(t, 0, 1))) + 0.3 * (1 - e) + 3 * up, ry: 1.6 * (1 - outC(seg(t, 0, 1))), rz: lerp(0.9, 0.03, e) }]; } },
+        { at: 13, dur: 6.5, f: (t) => {
+          const roll = outC(seg(t, 0, 1.1)), xr = lerp(-320, 820, roll), e = smooth(seg(t, 1.3, 2.5)), out = inQ(seg(t, 5.6, 6.5));
+          // it springs up a little as it bursts open, then settles flat
+          return [{ S: S3, e, k: seg(t, 2.8, 4.0), x: lerp(xr, 960, e) - 1700 * out, y: lerp(600, 540, e), lift: 70 * Math.sin(Math.PI * e), ry: ((xr - 820) / 150) * (1 - e) + 0.5 * (1 - e), rx: 0.2 * (1 - e), rz: lerp(0.3, 0.02, e) - 0.25 * out }]; } },
+        { at: 19.5, dur: 6.5, fps: 10, f: (t) => {
+          const ea = smooth(seg(t, 1.0, 2.1)), eb = smooth(seg(t, 1.6, 2.7)), out = inQ(seg(t, 5.6, 6.5));
+          const ya = lerp(-260, 470, outC(seg(t, 0, 0.9))), yb = lerp(1340, 600, outC(seg(t, 0.3, 1.2)));
+          return [
+            { S: S4a, e: ea, k: seg(t, 2.3, 3.4), x: lerp(820, 690, ea), y: lerp(ya, 520, ea) - 1100 * out, rz: lerp(-2.5 + 2.5 * outC(seg(t, 0, 0.9)), -0.07, ea), ry: 0.3 * (1 - ea) },
+            { S: S4b, e: eb, k: seg(t, 2.9, 4.0), x: lerp(1120, 1240, eb), y: lerp(yb, 560, eb) + 1100 * out, rz: lerp(2 - 2 * outC(seg(t, 0.3, 1.2)), 0.06, eb), rx: 0.4 * (1 - eb) },
+          ]; } },
+        { at: 26, dur: 6, f: (t) => {
+          const e = inOut(seg(t, 1.1, 3.0)) * (1 - inOut(seg(t, 5.0, 5.6))), y = lerp(1350, 540, outC(seg(t, 0, 0.9))) + 900 * inQ(seg(t, 5.4, 6));
+          return [{ S: S5, e, k: seg(t, 3.1, 4.6), x: 960, y, rz: lerp(-0.3, -0.015, e), rx: 0.25 * (1 - e) }]; } },
+        { at: 32, dur: 6, fps: 8, f: (t) => {
+          const e = 0.5 * inOut(seg(t, 1.2, 2.0)) + 0.5 * inOut(seg(t, 2.3, 3.1)), back = inOut(seg(t, 5.0, 5.5)), ef = e * (1 - back);
+          return [{ S: S6, e: ef, k: seg(t, 3.3, 4.5), x: lerp(2250, 960, outC(seg(t, 0, 1.0))) + 1500 * inQ(seg(t, 5.3, 6)), y: 540, rz: lerp(0.9, -0.03, outC(seg(t, 0, 1.0))) }]; } },
+        { at: 38, dur: 6, f: (t) => {
+          const e = inOut(seg(t, 0.9, 3.2));
+          return [{ S: S7, e, k: seg(t, 3.4, 4.6), x: 960 - 700 * (1 - outC(seg(t, 0, 0.8))), y: 540, rz: -0.02 }]; } },
+        { at: 44, dur: 6, fps: 8, f: (t) => {
+          // slides in spinning, rests, then the photo frames play 1→9; the last two alternate so the flat sheet boils
+          const fr = t < 1.3 ? 0 : t < 3.3 ? 1 + Math.min(7, Math.floor((t - 1.3) / 0.25)) : 7 + (Math.floor(t * 4) % 2);
+          const x = lerp(2200, 960, outC(seg(t, 0, 0.9))), out = inQ(seg(t, 5.4, 6));
+          return [{ imgs: genC, frame: fr, x: x - 1500 * out, y: 540, s: 2.25, rz: lerp(-4, -0.04, outC(seg(t, 0, 0.9))) }]; } },
+        { at: 50, dur: 6, fps: 6, f: (t) => {
+          // dropped from above, then fewer, bigger steps: each frame held 1/3 s
+          const fr = t < 1.2 ? 0 : t < 3.6 ? 1 + Math.min(7, Math.floor((t - 1.2) / 0.34)) : 7 + (Math.floor(t * 3) % 2);
+          return [{ imgs: genB, frame: fr, x: 960, y: 545, s: 2.3, lift: drop(t), rz: lerp(1.2, 0.03, outC(seg(t, 0, 1))), k: seg(t, 3.8, 5.0), ink: inkB }]; } },
+      ];
+
+      // ── the driver: each scene quantized to its own frame rate (6–12 fps), each step redrawn once, a little stop-motion jitter ──
+      const tags = [...document.querySelectorAll(".tag")];
+      let lastStep = -1;
+      function render(t) {
+        const key = Math.floor(t * 24 + 1e-6) + (paperReady() && fontReady() ? "r" : "n"); if (key === lastStep) return; lastStep = key;
+        ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, W, H);
+        const used = new Set();
+        SCENES.forEach((sc, i) => {
+          const loc = t - sc.at, on = loc >= 0 && loc < sc.dur, fps = sc.fps || FPS, step = Math.floor(loc * fps + 1e-6) + i * 1000;
+          tags[i].style.opacity = on && loc < sc.dur - 0.5 ? 1 : 0;
+          if (!on) return;
+          sc.f((step - i * 1000) / fps).forEach((it, j) => { it.x += hash(step, j + 1) * 1.2; it.y += hash(step, j + 7) * 1.2; it.rz = (it.rz || 0) + hash(step, j + 13) * 0.003; drawItem(it); if (it.S) used.add(it.S); });
+        });
+        ALL.forEach((S) => { if (!used.has(S) && S.texKey !== null) S.release(); });
+      }
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) }, 0);
+      render(0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
