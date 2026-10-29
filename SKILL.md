@@ -5,7 +5,7 @@ description: Procedural paper that crumples, fans, folds or rolls and then opens
 
 # Paper unfold from a procedural mesh
 
-> **Status: working, with room for improvement.** The rolling loose ball, squashed sticky-note wads, accordion and scroll look good. The generated photo frames of the sister skill [`paper-unfold-frames`](https://github.com/Ker102/paper-unfold-frames) still look more real. **Update this skill whenever a project gets better results**: new structures, better crumple geometry, fixes. Keep the "what went wrong" list current.
+> **Status: working, with room for improvement.** The rolling loose ball, squashed sticky-note wads, accordion and scroll look good. The generated photo frames of the sister skill [`paper-unfold-frames`](https://github.com/OpenRootdev/paper-unfold-frames) still look more real. **Update this skill whenever a project gets better results**: new structures, better crumple geometry, fixes. Keep the "what went wrong" list current.
 
 Full working source: `examples/paper-unfold-trials.html`, a single HyperFrames composition of 56 s with 9 scenes. It expects `assets/img/paper.jpg` (any paper texture), `assets/img/wood.jpg` (a top-down desk photo), the Caveat woff2 font and audio files you supply. The engine is plain canvas 2D plus GSAP for the clock, so it ports to Remotion or a web page.
 
