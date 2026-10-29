@@ -60,10 +60,8 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## Qué incluye
 
-| | |
-|---|---|
-| [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) | Las instrucciones que sigue tu agente, con lo que salió mal e ideas por probar. |
-| [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) | El código completo del vídeo de demostración de 9 escenas. |
+- [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) · Las instrucciones que sigue tu agente, con lo que salió mal e ideas por probar.
+- [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · El código completo del vídeo de demostración de 9 escenas.
 
 <sub>Los vídeos e imágenes de muestra están en la rama <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a> y las traducciones en <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a>, así <code>main</code> contiene solo la skill.</sub>
 

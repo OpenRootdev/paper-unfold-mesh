@@ -60,10 +60,8 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## 包含内容
 
-| | |
-|---|---|
-| [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) | 智能体遵循的说明，包括踩过的坑和待尝试的想法。 |
-| [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) | 9 个场景演示视频的完整源码。 |
+- [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) · 智能体遵循的说明，包括踩过的坑和待尝试的想法。
+- [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · 9 个场景演示视频的完整源码。
 
 <sub>预览图片和视频放在 <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a> 分支，翻译放在 <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a> 分支，<code>main</code> 只包含技能本身。</sub>
 

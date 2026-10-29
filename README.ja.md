@@ -60,10 +60,8 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## 中身
 
-| | |
-|---|---|
-| [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) | エージェントが従う手順書。失敗例と試したいアイデアも載っています。 |
-| [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) | 9シーンのデモ動画の全ソース。 |
+- [`SKILL.md`](https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md) · エージェントが従う手順書。失敗例と試したいアイデアも載っています。
+- [`examples/paper-unfold-trials.html`](https://github.com/Ker102/paper-unfold-mesh/blob/main/examples/paper-unfold-trials.html) · 9シーンのデモ動画の全ソース。
 
 <sub>プレビュー用の画像・動画は <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a> ブランチ、翻訳は <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a> ブランチにあり、<code>main</code> にはスキル本体だけが入っています。</sub>
 
