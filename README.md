@@ -60,10 +60,8 @@ git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills
 
 ## What's inside
 
-| | |
-|---|---|
-| [`SKILL.md`](SKILL.md) | The instructions your agent follows, including what went wrong and ideas to try. |
-| [`examples/paper-unfold-trials.html`](examples/paper-unfold-trials.html) | The full source of the 9-scene demo reel. |
+- [`SKILL.md`](SKILL.md) · The instructions your agent follows, including what went wrong and ideas to try.
+- [`examples/paper-unfold-trials.html`](examples/paper-unfold-trials.html) · The full source of the 9-scene demo reel.
 
 <sub>Preview media lives on the <a href="https://github.com/Ker102/paper-unfold-mesh/tree/assets"><code>assets</code></a> branch and translations on <a href="https://github.com/Ker102/paper-unfold-mesh/tree/translations"><code>translations</code></a>, so <code>main</code> holds only the skill.</sub>
 
